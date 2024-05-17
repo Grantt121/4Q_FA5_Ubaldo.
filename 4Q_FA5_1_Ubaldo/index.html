@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .output {
+            white-space: pre;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="output" id="output"></div>
+
+    <script>
+        function generateShape() {
+            let input = prompt('Please enter a number:');
+            while (isNaN(input) || input.trim() === '') {
+                input = prompt('Invalid input. Please enter a numerical value:');
+            }
+
+            const number = parseInt(input);
+            const outputDiv = document.getElementById('output');
+            outputDiv.innerHTML = `Number inputted: ${number}\n\n`;
+
+            if (number % 2 === 1) {
+                printRectangle(number, outputDiv);
+            } else {
+                printTriangle(number, outputDiv);
+            }
+        }
+
+        function printRectangle(n, outputDiv) {
+            for (let i = n; i > 0; i--) {
+                outputDiv.innerHTML += `${Array(n).fill(i).join(' ')}\n`;
+            }
+        }
+
+        function printTriangle(n, outputDiv) {
+            for (let i = n; i > 0; i--) {
+                outputDiv.innerHTML += `${Array(i).fill(i).join(' ')}\n`;
+            }
+        }
+
+        window.onload = generateShape;
+    </script>
+</body>
+</html>
